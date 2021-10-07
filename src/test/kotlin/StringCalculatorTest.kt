@@ -27,5 +27,9 @@ class StringCalculatorTest {
 
     }
 
-
+    @Test
+    internal fun `handle new lines between numbers`() {
+        assertEquals(6, StringCalculator().add("1\n2,3"))
+        assertEquals(28, StringCalculator().add("12\n4\n11\n1"))
+    }
 }
