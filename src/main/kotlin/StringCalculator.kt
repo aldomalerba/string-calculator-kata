@@ -1,21 +1,24 @@
 class StringCalculator {
-    fun add(input: String) =
-        input.removeDelimiter()
+    fun add(input: String) : Int {
+
+        val numbers = input.removeDelimiter()
             .ifEmpty { "0" }
             .split(getDelimiter(input), "\n")
             .map { it.toInt() }
-            .allowOnlyPositives()
             .filter{ it <= 1000 }
-            .sum()
+
+        allowOnlyPositives(numbers)
+
+        return numbers.sum()
+    }
 
 
-    private fun List<Int>.allowOnlyPositives(): List<Int>  {
+    private fun allowOnlyPositives(numbers: List<Int>) {
 
-        val negativeNumbers = filter { it < 0 }
+        val negativeNumbers = numbers.filter { it < 0 }
         if(negativeNumbers.isNotEmpty())
             throw Exception("negatives not allowed: ${negativeNumbers.joinToString("," )}")
 
-        return this
     }
 
     private fun String.removeDelimiter() = if (hasDelimiter(this)) this.substring(4) else this
