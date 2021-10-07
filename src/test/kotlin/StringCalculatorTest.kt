@@ -17,4 +17,11 @@ class StringCalculatorTest {
 
     }
 
+    @Test
+    internal fun `sum two numbers`() {
+
+        assertEquals(3, StringCalculator().add("1,2"))
+        assertEquals(16, StringCalculator().add("12,4"))
+
+    }
 }
