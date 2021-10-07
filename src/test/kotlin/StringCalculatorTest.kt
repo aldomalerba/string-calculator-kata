@@ -32,4 +32,10 @@ class StringCalculatorTest {
         assertEquals(6, StringCalculator().add("1\n2,3"))
         assertEquals(28, StringCalculator().add("12\n4\n11\n1"))
     }
+
+    @Test
+    internal fun `support different delimiters`() {
+        assertEquals(6, StringCalculator().add("//;\n1;2;3"))
+        assertEquals(28, StringCalculator().add("//m\n12m4m11\n1"))
+    }
 }
