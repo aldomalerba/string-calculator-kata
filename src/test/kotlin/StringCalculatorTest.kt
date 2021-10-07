@@ -48,4 +48,9 @@ class StringCalculatorTest {
         assertEquals("negatives not allowed: -1,-3", exception.message)
 
     }
+
+    @Test
+    internal fun `ignore big numbers`() {
+        assertEquals(7, StringCalculator().add("2,1001,10123,5"))
+    }
 }
