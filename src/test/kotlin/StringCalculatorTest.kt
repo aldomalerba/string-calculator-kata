@@ -1,4 +1,6 @@
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.assertDoesNotThrow
+import org.junit.jupiter.api.assertThrows
 import kotlin.test.assertEquals
 
 class StringCalculatorTest {
@@ -37,5 +39,13 @@ class StringCalculatorTest {
     internal fun `support different delimiters`() {
         assertEquals(6, StringCalculator().add("//;\n1;2;3"))
         assertEquals(28, StringCalculator().add("//m\n12m4m11\n1"))
+    }
+
+    @Test
+    internal fun `negative numbers throw an exception`() {
+
+        val exception = assertThrows<Exception> { StringCalculator().add("2,-1,-3") }
+        assertEquals("negatives not allowed: -1,-3", exception.message)
+
     }
 }

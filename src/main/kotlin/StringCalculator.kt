@@ -1,9 +1,14 @@
 class StringCalculator {
     fun add(input: String) : Int {
-        return input.removeDelimiter()
+        val numbers = input.removeDelimiter()
             .ifEmpty { "0" }
             .split(getDelimiter(input), "\n")
-            .sumOf(String::toInt)
+            .map { it.toInt() }
+
+        val negativeNumbers = numbers.filter { it < 0 }
+        if(negativeNumbers.isNotEmpty())
+            throw Exception("negatives not allowed: ${negativeNumbers.joinToString("," )}")
+        else return numbers.sum()
     }
 
     private fun String.removeDelimiter() = if (hasDelimiter(this)) this.substring(4) else this
