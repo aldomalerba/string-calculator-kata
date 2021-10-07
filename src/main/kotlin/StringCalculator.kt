@@ -1,14 +1,15 @@
 class StringCalculator {
     fun add(input: String) : Int {
-        return (if(input.startsWith("//")) input.substring(4) else input)
-        .ifEmpty { "0" }.split(getDelimiter(input), "\n").sumOf(String::toInt)
+        return input.removeDelimiter()
+            .ifEmpty { "0" }
+            .split(getDelimiter(input), "\n")
+            .sumOf(String::toInt)
     }
 
-    private fun getDelimiter(input: String): String {
-        if(input.startsWith("//")){
-            return input[2].toString()
-        }
-        return ","
-    }
+    private fun String.removeDelimiter() = if (hasDelimiter(this)) this.substring(4) else this
+
+    private fun getDelimiter(input: String) = if(hasDelimiter(input))  input[2].toString() else ","
+
+    private fun hasDelimiter(input: String) = input.startsWith("//")
 
 }
