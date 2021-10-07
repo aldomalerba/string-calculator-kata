@@ -51,6 +51,6 @@ class StringCalculatorTest {
 
     @Test
     internal fun `ignore big numbers`() {
-        assertEquals(7, StringCalculator().add("2,1001,10123,5"))
+        assertEquals(1007, StringCalculator().add("2,1000,1001,10123,5"))
     }
 }

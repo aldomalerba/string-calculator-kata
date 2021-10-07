@@ -5,7 +5,7 @@ class StringCalculator {
             .split(getDelimiter(input), "\n")
             .map { it.toInt() }
             .allowOnlyPositives()
-            .filter{ it < 1000 }
+            .filter{ it <= 1000 }
             .sum()
 
 
