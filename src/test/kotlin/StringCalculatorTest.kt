@@ -24,4 +24,11 @@ class StringCalculatorTest {
         assertEquals(16, StringCalculator().add("12,4"))
 
     }
+
+    @Test
+    internal fun `sum more than two numbers`() {
+        assertEquals(6, StringCalculator().add("1,2,3"))
+        assertEquals(27, StringCalculator().add("12,4,11"))
+    }
+
 }
